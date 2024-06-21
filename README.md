@@ -119,6 +119,157 @@ roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
 ```mongodb://146.190.102.47:27017```
 12. Jika sudah bisa terhubung dengan Compass maka konfigurasi database berhasil.
 
+### Konfigurasi VM-1 (Worker 1)
+1. Sambungkan terminal windows ke terminal vm.
+```ssh root@152.42.226.87 image```
+Masukkan password vm.
+2. Download semua resource keperluan dari github
+```
+wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/FE/index.html
+wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/FE/styles.css
+wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/BE/sentiment-analysis.py
+```
+
+3. Lakukan beberapa command berikut untuk install nginx
+```
+sudo apt update
+sudo apt upgrade -y
+sudo apt install nginx -y
+```
+
+4. Install dependency python
+```
+sudo apt update
+sudo apt install python3 -y
+sudo apt install python3-pip -y
+sudo apt install python3.12-venv
+
+python3 -m venv myenv
+source myenv/bin/activate
+
+pip install flask
+pip install flask_cors
+pip install gunicorn
+pip install flask_pymongo
+pip install textblob
+pip install pymongo
+pip install gevent
+```
+
+5. Pindahkan index.html kedalam /var/www/html
+```
+mv index.html /var/www/html/index.html
+```
+
+6. Ubah cara fetch pada index.html agar mengarah ke ip worker
+GAMBAR
+7. Konfigurasikan /etc/nginx/sites-enabled/default
+image
+Tambahkan routing ke endpoint /analyze dan /history
+8. Konfigurasikan ip database pada file sentiment-analysis.py agar tersambung
+image
+9. Restart nginx
+```
+sudo service nginx restart
+```
+10. Jalankan sentiment-analysis.py
+image
+11. Coba lakukan query untuk mengetes apakah berjalan dengan lancar
+image
+Jika muncul seperti gambar maka konfigurasi benar.
+
+### Konfigurasi VM-2 (Worker 2)
+1. Sambungkan terminal windows ke terminal vm.
+```
+ssh root@152.42.229.121
+```
+image
+Masukkan password vm.
+
+2. Download semua resource keperluan dari github
+```
+wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/FE/index.html
+wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/FE/styles.css
+wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/BE/sentiment-analysis.py
+```
+3. Lakukan beberapa command berikut untuk install nginx
+```
+sudo apt update
+sudo apt upgrade -y
+sudo apt install nginx -y
+```
+
+4. Install dependency python
+```
+sudo apt update
+sudo apt install python3 -y
+sudo apt install python3-pip -y
+sudo apt install python3.12-venv
+
+python3 -m venv myenv
+source myenv/bin/activate
+
+pip install flask
+pip install flask_cors
+pip install gunicorn
+pip install flask_pymongo
+pip install textblob
+pip install pymongo
+pip install gevent
+```
+
+5. Pindahkan index.html kedalam /var/www/html
+```
+mv index.html /var/www/html/index.html
+```
+
+6. Ubah cara fetch pada index.html agar mengarah ke ip worker
+image
+image
+
+7.  Konfigurasikan /etc/nginx/sites-enabled/default
+image
+
+8.  Tambahkan routing ke endpoint /analyze dan /history
+Konfigurasikan ip database pada file sentiment-analysis.py agar tersambung
+image
+
+9.  Jika sudah restart nginx
+```
+bash sudo service nginx restart
+```
+
+10.  Jalankan sentiment-analysis.py
+image
+
+11. Coba lakukan query untuk mengetes apakah berjalan dengan lancar
+image
+Jika muncul seperti gambar maka konfigurasi benar.
+
+
+### Konfigurasi VM-4 (Load-Balancer 1 Round-Robin)
+1. Sambungkan terminal VM.
+image
+
+2.  Lakukan beberapa command berikut untuk install nginx
+```
+sudo apt update
+sudo apt upgrade -y
+sudo apt install nginx -y
+```
+
+3. Konfigurasikan file default pada /etc/nginx/sites-enabled/default
+image
+
+4.  Restart service nginx
+```
+sudo service nginx restart
+```
+
+5. Jika sudah test load-balancer dengan refresh page berkali-kali
+((GAMBAR))
+((GAMBAR))
+
 
 ## Hasil Uji
 ## Uji Endpoint /analyze
