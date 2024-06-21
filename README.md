@@ -62,7 +62,7 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 
 ## Implementasi
 ### Konfigurasi VM-3 (Database)
-1. Sambungkan terminal windows ke terminal vm. ```ssh root@146.190.102.47```
+1. Sambungkan terminal windows ke terminal vm. ```ssh root@152.42.214.44```
 (((GAMBAR)))
 2. Masukkan password vm
 3. Install MongoDB
@@ -122,7 +122,7 @@ roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
 
 ### Konfigurasi VM-1 (Worker 1)
 1. Sambungkan terminal windows ke terminal vm.
-```ssh root@152.42.226.87 image```
+```ssh root@128.199.142.10```
 Masukkan password vm.
 2. Download semua resource keperluan dari github
 ```
@@ -187,7 +187,7 @@ Jika muncul seperti gambar maka konfigurasi benar.
 ### Konfigurasi VM-2 (Worker 2)
 1. Sambungkan terminal windows ke terminal vm.
 ```
-ssh root@152.42.229.121
+ssh root@128.199.140.87
 ```
 Masukkan password vm.
 
@@ -251,8 +251,7 @@ Jika muncul seperti gambar maka konfigurasi benar.
 
 
 ### Konfigurasi VM-4 (Load-Balancer 1 Round-Robin)
-1. Sambungkan terminal VM.
-image
+1. Sambungkan terminal VM ssh@root178.128.96.149
 
 2.  Lakukan beberapa command berikut untuk install nginx
 ```
