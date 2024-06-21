@@ -61,6 +61,64 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 |   |    | **Total Biaya: $60/bulan** |
 
 ## Implementasi
+### Konfigurasi VM-3 (Database)
+1. Sambungkan terminal windows ke terminal vm. ```ssh root@146.190.102.47```
+(((GAMBAR)))
+2. Masukkan password vm
+3. Install MongoDB
+```
+sudo apt update
+sudo apt upgrade
+
+# Install dependency
+sudo apt install gnupg wget apt-transport-https ca-certificates software-properties-common
+echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
+sudo apt-get update
+sudo apt-get install libssl1.1
+
+# Install mongodb
+wget -qO- https://pgp.mongodb.com/server-7.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb-server-7.0.gpg >/dev/null
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | sudo tee -a /etc/apt/sources.list.d/mongodb-org-7.0.list
+sudo apt update
+sudo apt install mongodb-org -y
+```
+
+3. Enable MongoDB
+```
+sudo systemctl start mongod
+sudo systemctl enable mongod
+```
+
+4. Konfigurasi MongoDB
+```
+sudo nano /etc/mongod.conf
+```
+((GAMBAR))
+
+5. Restart service MongoDB
+```sudo systemctl restart mongodB```
+6. Buka port pada firewall
+```sudo ufw allow 27017```
+7. Buka shell MongoDB
+```mongo```
+8. Masuk sebagai user Admin
+```use admin```
+9. Buat user Admin
+```
+db.createUser({
+user: "KelompokTKA2A",
+pwd: "KelompokTKA2A",
+roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
+
+})
+```
+10. Cek user yang baru dibuat```
+```db.getUser("KelompokTKA2A")
+11. Sambungkan ke MongoDBCompass
+```mongodb://146.190.102.47:27017```
+12. Jika sudah bisa terhubung dengan Compass maka konfigurasi database berhasil.
+
+
 ## Hasil Uji
 ## Uji Endpoint /analyze
 128.199.142.10 (worker-1)
