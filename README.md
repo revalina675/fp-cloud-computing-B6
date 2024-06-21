@@ -107,15 +107,15 @@ sudo nano /etc/mongod.conf
 9. Buat user Admin
 ```
 db.createUser({
-user: "KelompokTKA2A",
-pwd: "KelompokTKA2A",
+user: "KelompokTKA_B6",
+pwd: "KelompokTKA_B6",
 roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
 
 })
 ```
 
 10. Cek user yang baru dibuat
-```db.getUser("KelompokTKA2A")```
+```db.getUser("KelompokTKA_B6")```
 11. Sambungkan ke MongoDBCompass
 ```mongodb://146.190.102.47:27017```
 12. Jika sudah bisa terhubung dengan Compass maka konfigurasi database berhasil.
