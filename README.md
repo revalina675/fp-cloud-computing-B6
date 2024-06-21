@@ -163,20 +163,25 @@ mv index.html /var/www/html/index.html
 ```
 
 6. Ubah cara fetch pada index.html agar mengarah ke ip worker
-GAMBAR
 7. Konfigurasikan /etc/nginx/sites-enabled/default
-image
+   ![Screenshot 2024-06-20 121939](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/4ae4b105-d965-4497-9b14-196945caa0bc)
+
 Tambahkan routing ke endpoint /analyze dan /history
 8. Konfigurasikan ip database pada file sentiment-analysis.py agar tersambung
-image
+![Screenshot 2024-06-20 130556](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/113a6d89-c98f-41bd-ab4b-831f02de8bdd)
+
 9. Restart nginx
 ```
 sudo service nginx restart
 ```
 10. Jalankan sentiment-analysis.py
-image
-11. Coba lakukan query untuk mengetes apakah berjalan dengan lancar
-image
+![Screenshot 2024-06-20 130752](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/b1a1365b-cc18-4a79-8760-085317fa3571)
+
+12. Coba lakukan query untuk mengetes apakah berjalan dengan lancar
+![Screenshot 2024-06-20 132818](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/8a584aed-1692-45bc-8f09-8cccbe2e7b39)
+![Screenshot 2024-06-21 112745](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/b49862a1-0ba5-4b75-9469-ec07f0e80cc9)
+
+
 Jika muncul seperti gambar maka konfigurasi benar.
 
 ### Konfigurasi VM-2 (Worker 2)
@@ -184,7 +189,6 @@ Jika muncul seperti gambar maka konfigurasi benar.
 ```
 ssh root@152.42.229.121
 ```
-image
 Masukkan password vm.
 
 2. Download semua resource keperluan dari github
@@ -225,26 +229,24 @@ mv index.html /var/www/html/index.html
 ```
 
 6. Ubah cara fetch pada index.html agar mengarah ke ip worker
-image
-image
 
-7.  Konfigurasikan /etc/nginx/sites-enabled/default
-image
-
+7.  Konfigurasikan /etc/nginx/sites-enabled/default 
 8.  Tambahkan routing ke endpoint /analyze dan /history
 Konfigurasikan ip database pada file sentiment-analysis.py agar tersambung
-image
-
+ 
 9.  Jika sudah restart nginx
 ```
 bash sudo service nginx restart
 ```
 
 10.  Jalankan sentiment-analysis.py
-image
+![Screenshot 2024-06-20 135302](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/f3acb5d9-63a9-4ab1-a4b5-13a3da177a48)
 
 11. Coba lakukan query untuk mengetes apakah berjalan dengan lancar
-image
+    ![Screenshot 2024-06-20 135410](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/f75becfc-ef01-4745-821e-05abc07860d6)
+
+    
+
 Jika muncul seperti gambar maka konfigurasi benar.
 
 
@@ -268,8 +270,7 @@ sudo service nginx restart
 ```
 
 5. Jika sudah test load-balancer dengan refresh page berkali-kali
-((GAMBAR))
-((GAMBAR))
+
 
 
 ## Hasil Uji
