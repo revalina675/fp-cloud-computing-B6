@@ -45,6 +45,21 @@ Kemudian juga disediakan sebuah Frontend sederhana menggunakan [index.html](http
 Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutuhan aplikasi tersebut. Apabila dana maksimal yang diberikan adalah **1 juta rupiah per bulan (65 US$) konfigurasi cloud terbaik seperti apa yang bisa dibuat?**
 
 ## Rancangan Arsitektur Awan
+# Rancangan:
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/151063684/eb25f983-125e-485a-b123-223c10e690a5)
+
+# Rencana Harga
+| Nama        | Deskripsi                           | Harga             |
+|-----------------|---------------------------------------|-------------------|
+| **Load Balancer** | Instance: 1 Droplet                   | $12/bulan         |
+|                 | Spec: 1vCPU, 1GB RAM                  |                   |
+| **Virtual Machines** | Instance: 2 Droplets                  | $24/bulan         |
+|                 | Spec: 2vCPU, 2GB RAM masing-masing    |                   |
+|                 | Worker: $18/bulan x 2                 |                   |
+| **Database**    | Instance: 1 Droplet                   | $18/bulan         |
+|                 | Spec: 2vCPU, 2GB RAM                  |                   |
+**Total Biaya: $60/bulan**
+
 ## Implementasi
 ## Hasil Uji
 ## Kesimpulan
