@@ -164,3 +164,5 @@ roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
 
 
 ## Kesimpulan
+
+Algoritme Round Robin pad pengujian kami mencapi RPS maksimum di angka 40. Algoritma Round Robin dikenal memiliki kinerja unggul dalam menangani tingkat permintaan yang tinggi per detik. Ini cocok untuk situasi di mana server memiliki kapasitas dan karakteristik kinerja yang serupa, dengan tujuan untuk meningkatkan throughput secara maksimal. Selain itu, Round Robin mencapai tingkat konkurensi puncak dan mampu melakukan skalabilitas yang efektif dalam kondisi tertentu.
