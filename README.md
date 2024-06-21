@@ -53,10 +53,10 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 |-----------------|---------------------------------------|-------------------|
 | **Load Balancer** | Instance: 1 Droplet                   | $12/bulan         |
 |                 | Spec: 1vCPU, 1GB RAM                  |                   |
-| **Virtual Machines** | Instance: 2 Droplets                  | $24/bulan         |
+| **Virtual Machines** | Instance: 2 Droplets                  | $36/bulan         |
 |                 | Spec: 2vCPU, 2GB RAM masing-masing    |                   |
 |                 | Worker: $18/bulan x 2                 |                   |
-| **Database**    | Instance: 1 Droplet                   | $18/bulan         |
+| **Database**    | Instance: 1 Droplet                   | $12/bulan         |
 |                 | Spec: 2vCPU, 2GB RAM                  |                   |
 |   |    | **Total Biaya: $60/bulan** |
 
