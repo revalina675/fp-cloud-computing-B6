@@ -93,7 +93,8 @@ sudo systemctl enable mongod
 ```
 sudo nano /etc/mongod.conf
 ```
-((GAMBAR))
+![Screenshot 2024-06-20 123017](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/88ee5509-e78b-476f-bd69-1caf9f20a9e0)
+
 
 5. Restart service MongoDB
 ```sudo systemctl restart mongodB```
