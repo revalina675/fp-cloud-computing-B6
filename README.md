@@ -58,7 +58,7 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 |                 | Worker: $18/bulan x 2                 |                   |
 | **Database**    | Instance: 1 Droplet                   | $18/bulan         |
 |                 | Spec: 2vCPU, 2GB RAM                  |                   |
-**Total Biaya: $60/bulan**
+|   |    | **Total Biaya: $60/bulan** |
 
 ## Implementasi
 ## Hasil Uji
