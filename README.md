@@ -64,8 +64,19 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 ## Hasil Uji
 ## Uji Endpoint /analyze
 128.199.142.10 (worker-1)
+![Screenshot 2024-06-20 174051](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/e886869d-ac4a-4ac0-bfff-d1ca8015eb5a)
+
 128.199.140.87 (worker-2)
+![Screenshot 2024-06-20 174235](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/0df37291-fae7-46e2-ad74-ce8ea4123283)
+
 ## Uji Endpoint /history
+128.199.142.10 (worker-1)
+![Screenshot 2024-06-20 173715](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/c7455fcc-abb7-4f0a-aa69-7c57cb7c3f6b)
+
+128.199.140.87 (worker-2)
+![Screenshot 2024-06-20 174626](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/1ee186c2-138a-4081-9e74-dcce11958395)
+
+
 ## Uji load testing locust
 ## Uji RPS dalam 60s
 ## Uji peak concurrency dengan spawn rate 50
