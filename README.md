@@ -48,7 +48,7 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 ### Rancangan:
 ![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/151063684/eb25f983-125e-485a-b123-223c10e690a5)
 
-# Rencana Harga
+### Rencana Harga
 | Nama        | Deskripsi                           | Harga             |
 |-----------------|---------------------------------------|-------------------|
 | **Load Balancer** | Instance: 1 Droplet                   | $12/bulan         |
