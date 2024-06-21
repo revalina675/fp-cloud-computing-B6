@@ -79,8 +79,29 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 
 ## Uji load testing locust
 ## Uji RPS dalam 60s
+![Screenshot 2024-06-21 114837](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/bdd7c208-e62a-492c-9c6e-c9ab8700bb52)
+
+![Screenshot 2024-06-21 115830](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/0cb8236b-afbc-4f91-961e-ac15505b4705)
+
 ## Uji peak concurrency dengan spawn rate 50
+![Screenshot 2024-06-21 120106](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/ddbf57d1-63a4-42d2-b2f8-74dbae626c5c)
+
+![Screenshot 2024-06-21 120411](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/e4600546-ab1a-4e6a-9dff-ab1a9de93678)
+
 ## Uji peak concurrency dengan spawn rate 100
+![Screenshot 2024-06-21 120515](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/5874922f-9eff-405c-9d65-9b00f40f495e)
+
+![Screenshot 2024-06-21 120712](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/21e711b6-4c08-4e87-9a37-fe0ed8c49455)
+
 ## Uji peak concurrency dengan spawn rate 200
+![Screenshot 2024-06-21 120805](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/9f748926-6fc6-47da-b49c-08ee47359d9a)
+
+![Screenshot 2024-06-21 121019](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/7a9726f3-f40c-4f44-b120-eaf7b648dfa3)
+
 ## Uji peak concurrency dengan spawn rate 500
+![Screenshot 2024-06-21 121416](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/05dc68ab-1982-4a9a-8275-3552c0e26367)
+
+![Screenshot 2024-06-21 121332](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/0eac6d55-0a7f-400c-a76a-a99006017adf)
+
+
 ## Kesimpulan
