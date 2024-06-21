@@ -112,8 +112,9 @@ roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
 
 })
 ```
-10. Cek user yang baru dibuat```
-```db.getUser("KelompokTKA2A")
+
+10. Cek user yang baru dibuat
+```db.getUser("KelompokTKA2A")```
 11. Sambungkan ke MongoDBCompass
 ```mongodb://146.190.102.47:27017```
 12. Jika sudah bisa terhubung dengan Compass maka konfigurasi database berhasil.
