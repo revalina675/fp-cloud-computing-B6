@@ -62,4 +62,14 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 
 ## Implementasi
 ## Hasil Uji
+## Uji Endpoint /analyze
+128.199.142.10 (worker-1)
+128.199.140.87 (worker-2)
+## Uji Endpoint /history
+## Uji load testing locust
+## Uji RPS dalam 60s
+## Uji peak concurrency dengan spawn rate 50
+## Uji peak concurrency dengan spawn rate 100
+## Uji peak concurrency dengan spawn rate 200
+## Uji peak concurrency dengan spawn rate 500
 ## Kesimpulan
