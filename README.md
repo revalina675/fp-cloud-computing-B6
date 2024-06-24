@@ -60,15 +60,14 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 |                 | Spec: 2vCPU, 2GB RAM                  |                   |
 |   |    | **Total Biaya: $60/bulan** |
 
-## Implementasi
-### Konfigurasi VM-3 (Database)
-1. Sambungkan terminal windows ke terminal vm. ```ssh root@152.42.214.44```
-(((GAMBAR)))
-2. Masukkan password vm
-3. Install MongoDB
+## Implementasi Rancangan
+### SET UP Konfigurasi Database MongoDB
+1. Sambungkan terminal windows ke terminal vm, lalu masukkan password droplets ```ssh root@152.42.214.44```
+   ![Screenshot 2024-06-24 053410](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/fe8746e9-62df-46da-9a1a-883e6b06381c)
+
+2. Lakukan instalasi MongoDB
 ```
 sudo apt update
-sudo apt upgrade
 
 # Install dependency
 sudo apt install gnupg wget apt-transport-https ca-certificates software-properties-common
@@ -77,34 +76,36 @@ sudo apt-get update
 sudo apt-get install libssl1.1
 
 # Install mongodb
-wget -qO- https://pgp.mongodb.com/server-7.0.asc | gpg --dearmor | sudo tee /usr/share/keyrings/mongodb-server-7.0.gpg >/dev/null
-echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | sudo tee -a /etc/apt/sources.list.d/mongodb-org-7.0.list
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+apt-key list
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 sudo apt update
-sudo apt install mongodb-org -y
+sudo apt install mongodb-org
 ```
 
-3. Enable MongoDB
+3. Ennable server MongoDB
 ```
 sudo systemctl start mongod
 sudo systemctl enable mongod
 ```
 
-4. Konfigurasi MongoDB
+4. Atur konfigurasi MongoDB, ganti port ke 0.0.0.0 agar dapat diakses dari port manapun
 ```
 sudo nano /etc/mongod.conf
 ```
 ![Screenshot 2024-06-20 123017](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/88ee5509-e78b-476f-bd69-1caf9f20a9e0)
 
-
 5. Restart service MongoDB
 ```sudo systemctl restart mongodB```
-6. Buka port pada firewall
+6. Izinkan akses port pada firewall
 ```sudo ufw allow 27017```
-7. Buka shell MongoDB
+7. Akses shell MongoDB
 ```mongo```
 8. Masuk sebagai user Admin
 ```use admin```
-9. Buat user Admin
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/baaa8480-4352-425e-ac3a-9ddd917e58b8)
+
+10. Buat user Admin
 ```
 db.createUser({
 user: "KelompokTKA_B6",
@@ -116,29 +117,32 @@ roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
 
 10. Cek user yang baru dibuat
 ```db.getUser("KelompokTKA_B6")```
-11. Sambungkan ke MongoDBCompass
-```mongodb://146.190.102.47:27017```
-12. Jika sudah bisa terhubung dengan Compass maka konfigurasi database berhasil.
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/c41945c6-00f6-4528-b6b0-727cfe34b007)
 
-### Konfigurasi VM-1 (Worker 1)
-1. Sambungkan terminal windows ke terminal vm.
+12. Sambungkan ke MongoDBCompass
+```mongodb://152.42.214.44:27017```
+13. Jika sudah bisa terhubung dengan Compass maka konfigurasi database berhasil.
+    ![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/6b16882e-ec14-490d-98c4-30c35ec46049)
+
+
+### SET UP Konfigurasi Worker 1
+1. Sambungkan terminal windows ke terminal vm, lalu masukkan password droplets
 ```ssh root@128.199.142.10```
-Masukkan password vm.
-2. Download semua resource keperluan dari github
+![Screenshot 2024-06-24 055856](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/e56d69eb-32f3-42b7-8e76-f97ec0cf7839)
+
+2. Download resource keperluan dari github
 ```
 wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/FE/index.html
 wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/FE/styles.css
-wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/BE/sentiment-analysis.py
 ```
 
-3. Lakukan beberapa command berikut untuk install nginx
+3. Lakukan command berikut untuk instalasi nginx
 ```
 sudo apt update
-sudo apt upgrade -y
 sudo apt install nginx -y
 ```
 
-4. Install dependency python
+4. Instalasi dependency python, lalu masuk ke shell ```myenv```
 ```
 sudo apt update
 sudo apt install python3 -y
@@ -162,49 +166,203 @@ pip install gevent
 mv index.html /var/www/html/index.html
 ```
 
-6. Ubah cara fetch pada index.html agar mengarah ke ip worker
-7. Konfigurasikan /etc/nginx/sites-enabled/default
+6. Gabungkan file styles.css ke index.html lalu ubah cara fetch pada index.html agar mengarah ke ip worker
+```html
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-container, .history-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .history-container {
+            height: 400px; /* Fixed height for history container */
+            overflow-y: auto;
+        }
+
+        .history-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .history-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .row {
+            display: flex;
+            align-items: stretch;
+            height: 400px; /* Same height as history container */
+        }
+
+        .row .col-md-6 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Highlighting styles */
+        .positive {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .negative {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Sentiment Analysis</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <form id="sentiment-form">
+                        <div class="form-group">
+                            <textarea id="text-input" class="form-control" rows="4" placeholder="Enter text here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Analyze</button>
+                    </form>
+                    <p id="result" class="text-center mt-4"></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="history-container">
+                    <h2 class="text-center">History</h2>
+                    <ul id="history" class="list-group mt-3"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('sentiment-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const text = document.getElementById('text-input').value;
+            try {
+                const response = await fetch('http://128.199.142.10/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text }),
+                });
+                if (!response.ok) throw new Error('Network response was not ok');
+                const result = await response.json();
+                const resultElement = document.getElementById('result');
+                resultElement.textContent = `Sentiment Score: ${result.sentiment}`;
+                resultElement.className = result.sentiment > 0 ? 'positive' : 'negative';
+                fetchHistory();
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        });
+
+        async function fetchHistory() {
+            try {
+                const response = await fetch('http://128.199.142.10/history');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const history = await response.json();
+                const historyList = document.getElementById('history');
+                historyList.innerHTML = '';
+                history.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.className = `list-group-item history-item ${item.sentiment > 0 ? 'positive' : 'negative'}`;
+                    listItem.textContent = `Text: ${item.text}, Sentiment: ${item.sentiment}`;
+                    historyList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        }
+
+        // Fetch history on page load
+        fetchHistory();
+    </script>
+</body>
+</html>
+```
+   
+7. Atur konfigurasi menggunakan ```sudo nano /etc/nginx/sites-enabled/default```
    ![Screenshot 2024-06-20 121939](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/4ae4b105-d965-4497-9b14-196945caa0bc)
 
-Tambahkan routing ke endpoint /analyze dan /history
-8. Konfigurasikan ip database pada file sentiment-analysis.py agar tersambung
+   Tambahkan routing ke endpoint /analyze dan /history
+8. Konfigurasikan IP database pada file sentiment-analysis.py agar tersambung dengan worker ```sudo nano sentiment-analysis,py```
 ![Screenshot 2024-06-20 130556](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/113a6d89-c98f-41bd-ab4b-831f02de8bdd)
 
-9. Restart nginx
+9. Restart service nginx
 ```
 sudo service nginx restart
 ```
 10. Jalankan sentiment-analysis.py
+    ```
+    python sentiment-analysis.py
+    ```
 ![Screenshot 2024-06-20 130752](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/b1a1365b-cc18-4a79-8760-085317fa3571)
 
-12. Coba lakukan query untuk mengetes apakah berjalan dengan lancar
+12. Coba lakukan query pada ```http://128.199.142.10``` untuk testing apakah sentiment-analysis berjalan dengan lancar
 ![Screenshot 2024-06-20 132818](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/8a584aed-1692-45bc-8f09-8cccbe2e7b39)
 ![Screenshot 2024-06-21 112745](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/b49862a1-0ba5-4b75-9469-ec07f0e80cc9)
 
 
-Jika muncul seperti gambar maka konfigurasi benar.
 
-### Konfigurasi VM-2 (Worker 2)
-1. Sambungkan terminal windows ke terminal vm.
+### SET UP Konfigurasi Worker 2
+1. Sambungkan terminal windows ke terminal vm, lalu masukkan password droplets
 ```
 ssh root@128.199.140.87
 ```
-Masukkan password vm.
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/fc4e54a2-5425-4f24-b9e7-07c507d6e383)
 
-2. Download semua resource keperluan dari github
+
+2. Download resource keperluan dari github
 ```
 wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/FE/index.html
 wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/FE/styles.css
-wget https://raw.githubusercontent.com/fuaddary/fp-tka/main/Resources/BE/sentiment-analysis.py
 ```
-3. Lakukan beberapa command berikut untuk install nginx
+3. Lakukan beberapa command berikut untuk instalasi nginx
 ```
 sudo apt update
-sudo apt upgrade -y
 sudo apt install nginx -y
 ```
 
-4. Install dependency python
+4. Instalasi dependency python, lalu masuk ke shell ```myenv```
 ```
 sudo apt update
 sudo apt install python3 -y
@@ -228,40 +386,200 @@ pip install gevent
 mv index.html /var/www/html/index.html
 ```
 
-6. Ubah cara fetch pada index.html agar mengarah ke ip worker
+6.  Gabungkan file styles.css ke index.html lalu ubah cara fetch pada index.html agar mengarah ke ip worker
+```html
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
 
-7.  Konfigurasikan /etc/nginx/sites-enabled/default 
-8.  Tambahkan routing ke endpoint /analyze dan /history
-Konfigurasikan ip database pada file sentiment-analysis.py agar tersambung
- 
-9.  Jika sudah restart nginx
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-container, .history-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .history-container {
+            height: 400px; /* Fixed height for history container */
+            overflow-y: auto;
+        }
+
+        .history-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .history-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .row {
+            display: flex;
+            align-items: stretch;
+            height: 400px; /* Same height as history container */
+        }
+
+        .row .col-md-6 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Highlighting styles */
+        .positive {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .negative {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Sentiment Analysis</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <form id="sentiment-form">
+                        <div class="form-group">
+                            <textarea id="text-input" class="form-control" rows="4" placeholder="Enter text here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Analyze</button>
+                    </form>
+                    <p id="result" class="text-center mt-4"></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="history-container">
+                    <h2 class="text-center">History</h2>
+                    <ul id="history" class="list-group mt-3"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('sentiment-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const text = document.getElementById('text-input').value;
+            try {
+                const response = await fetch('http://128.199.140.87/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text }),
+                });
+                if (!response.ok) throw new Error('Network response was not ok');
+                const result = await response.json();
+                const resultElement = document.getElementById('result');
+                resultElement.textContent = `Sentiment Score: ${result.sentiment}`;
+                resultElement.className = result.sentiment > 0 ? 'positive' : 'negative';
+                fetchHistory();
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        });
+
+        async function fetchHistory() {
+            try {
+                const response = await fetch('http://128.199.140.87/history');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const history = await response.json();
+                const historyList = document.getElementById('history');
+                historyList.innerHTML = '';
+                history.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.className = `list-group-item history-item ${item.sentiment > 0 ? 'positive' : 'negative'}`;
+                    listItem.textContent = `Text: ${item.text}, Sentiment: ${item.sentiment}`;
+                    historyList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        }
+
+        // Fetch history on page load
+        fetchHistory();
+    </script>
+</body>
+</html>
 ```
-bash sudo service nginx restart
+   
+
+7. Atur konfigurasi menggunakan ```sudo nano /etc/nginx/sites-enabled/default```
+   ![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/affb84fe-8f80-4c26-81dd-da1763655954)
+
+   Tambahkan routing ke endpoint /analyze dan /history
+9. Konfigurasikan IP database pada file sentiment-analysis.py agar tersambung dengan worker ```sudo nano sentiment-analysis.py```
+ ![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/ecc56984-5244-4547-a16b-f62f8bd3f9c8)
+
+10.  Restart service nginx
+```
+sudo service nginx restart
 ```
 
 10.  Jalankan sentiment-analysis.py
+```
+python sentiment-analysis.py
+```
 ![Screenshot 2024-06-20 135302](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/f3acb5d9-63a9-4ab1-a4b5-13a3da177a48)
 
-11. Coba lakukan query untuk mengetes apakah berjalan dengan lancar
+12. Coba lakukan query pada ```http://128.199.140.87``` untuk testing apakah sentiment-analysis berjalan dengan lancar
     ![Screenshot 2024-06-20 135410](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/f75becfc-ef01-4745-821e-05abc07860d6)
 
-    
-
-Jika muncul seperti gambar maka konfigurasi benar.
+    ![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/1c34a02b-4948-416d-938d-ccf53127409d)
 
 
-### Konfigurasi VM-4 (Load-Balancer 1 Round-Robin)
-1. Sambungkan terminal VM ssh@root178.128.96.149
 
-2.  Lakukan beberapa command berikut untuk install nginx
+
+### Konfigurasi Load-Balancer menggunkan algoritma Round-Robin
+1. Sambungkan terminal VM ssh root@178.128.96.149, lalu masukkan password droplets
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/fd2a7232-2b1b-422c-8bbc-08bfd944ed59)
+
+
+2.  Lakukan command berikut untuk instalasi nginx
 ```
 sudo apt update
-sudo apt upgrade -y
 sudo apt install nginx -y
 ```
 
-3. Konfigurasikan file default pada /etc/nginx/sites-enabled/default
-image
+3. Konfigurasikan file default pada /etc/nginx/sites-enabled/default ```sudo nano /etc/nginx/sites-enabled/default```
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/f34d7845-927a-4723-a250-d11e2fb067a3)
 
 4.  Restart service nginx
 ```
