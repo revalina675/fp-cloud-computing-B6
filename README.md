@@ -587,6 +587,9 @@ sudo service nginx restart
 ```
 
 5. Jika sudah test load-balancer dengan refresh page berkali-kali
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/9183e892-8f6e-4c1c-889d-5fdbdd8dc7e8)
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/31d4bb5e-76b3-4788-9176-da23d45d810b)
+
 
 
 
