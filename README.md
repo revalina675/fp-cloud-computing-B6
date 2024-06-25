@@ -568,7 +568,7 @@ python sentiment-analysis.py
 
 
 ### Konfigurasi Load-Balancer menggunkan algoritma Round-Robin
-1. Sambungkan terminal VM ssh root@178.128.96.149, lalu masukkan password droplets
+1. Sambungkan terminal VM ```ssh root@178.128.96.149```, lalu masukkan password droplets
 ![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/fd2a7232-2b1b-422c-8bbc-08bfd944ed59)
 
 
