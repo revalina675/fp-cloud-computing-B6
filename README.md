@@ -649,6 +649,6 @@ Algoritme Round Robin pad pengujian kami mencapi RPS maksimum di angka 40,4. Alg
 - **Peningkatan Kapasitas**: Jika tingkat permintaan terus meningkat, pertimbangkan untuk menambah kapasitas server atau menggunakan teknik skalabilitas horizontal dengan menambah lebih banyak server.
 - **Pengujian dan Simulasi**: untuk melakukan pengujian dan simulasi sebanyak mungkin. Hal ini akan membantu menemukan setiap potensi masalah dan memastikan bahwa sistem ini mampu menangani kondisi puncak.
 - **Optimasi Daya**: mengoptimalkan penggunaan sumber daya, seperti CPU dan memori, sehingga setiap server dapat berjalan pada kapasitas maksimum tanpa kelebihan muatan.
-- **Kegagalan atas dan redundansi**: ketenanganingattidaklebih-lebih-dan lebih-berlebihan tapiakumampirkarenaitu tapiriratirawaktu bila katamansalah meramsi server.
+- **Kegagalan atas dan redundansi**: Implementasikan mekanisme failover dan redundansi untuk memastikan ketersediaan tinggi dan menghindari downtime jika terjadi kegagalan pada salah satu server.
 
 Dengan memperhatikan saran-saran di atas, diharapkan proyek di masa mendatang lebih lancar dan berjalan optimal.
