@@ -658,3 +658,6 @@ Algoritme Round Robin pad pengujian kami mencapi RPS maksimum di angka 40,4. Alg
 - **Kegagalan atas dan redundansi**: Implementasikan mekanisme failover dan redundansi untuk memastikan ketersediaan tinggi dan menghindari downtime jika terjadi kegagalan pada salah satu server.
 
 Dengan memperhatikan saran-saran di atas, diharapkan proyek di masa mendatang lebih lancar dan berjalan optimal.
+
+## Link Youtube
+[Revisi Kelompok B6](https://youtu.be/7M9Hew_UGF8)
