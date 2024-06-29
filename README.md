@@ -613,27 +613,33 @@ sudo service nginx restart
 ## Uji RPS dalam 60s
 ![Screenshot 2024-06-21 114837](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/bdd7c208-e62a-492c-9c6e-c9ab8700bb52)
 
-![Screenshot 2024-06-21 115830](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/0cb8236b-afbc-4f91-961e-ac15505b4705)
+
+![Screenshot 2024-06-29 143542](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/f680c001-7c2e-4af5-bc8b-bf9d0e77e1ff)
+
 
 ## Uji peak concurrency dengan spawn rate 50
 ![Screenshot 2024-06-21 120106](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/ddbf57d1-63a4-42d2-b2f8-74dbae626c5c)
 
-![Screenshot 2024-06-21 120411](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/e4600546-ab1a-4e6a-9dff-ab1a9de93678)
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/083760b2-0e97-4276-96f8-1e4306f2d06a)
+
 
 ## Uji peak concurrency dengan spawn rate 100
 ![Screenshot 2024-06-21 120515](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/5874922f-9eff-405c-9d65-9b00f40f495e)
 
-![Screenshot 2024-06-21 120712](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/21e711b6-4c08-4e87-9a37-fe0ed8c49455)
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/a3002a09-a529-4c5e-ae92-2b7f6bfa01de)
+
 
 ## Uji peak concurrency dengan spawn rate 200
 ![Screenshot 2024-06-21 120805](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/9f748926-6fc6-47da-b49c-08ee47359d9a)
 
-![Screenshot 2024-06-21 121019](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/7a9726f3-f40c-4f44-b120-eaf7b648dfa3)
+![Screenshot 2024-06-29 143904](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/f559b227-916d-4243-aed1-1fefa8411280)
+
 
 ## Uji peak concurrency dengan spawn rate 500
 ![Screenshot 2024-06-21 121416](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/05dc68ab-1982-4a9a-8275-3552c0e26367)
 
-![Screenshot 2024-06-21 121332](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/0eac6d55-0a7f-400c-a76a-a99006017adf)
+![Screenshot 2024-06-29 143648](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/5d883da6-c1d3-46b1-be47-6f4213ede175)
+
 
 ## Tampilan Project DigitalOcean
 ![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/84ac0aed-d6bd-4502-94d3-2c64e10a0bce)
