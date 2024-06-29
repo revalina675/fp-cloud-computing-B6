@@ -635,6 +635,8 @@ sudo service nginx restart
 
 ![Screenshot 2024-06-21 121332](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/0eac6d55-0a7f-400c-a76a-a99006017adf)
 
+## Tampilan Project DigitalOcean
+![image](https://github.com/revalina675/fp-cloud-computing-B6/assets/150202762/84ac0aed-d6bd-4502-94d3-2c64e10a0bce)
 
 ## Kesimpulan
 
