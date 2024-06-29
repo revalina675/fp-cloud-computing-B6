@@ -641,3 +641,14 @@ sudo service nginx restart
 ## Kesimpulan
 
 Algoritme Round Robin pad pengujian kami mencapi RPS maksimum di angka 40,4. Algoritma Round Robin dikenal memiliki kinerja unggul dalam menangani tingkat permintaan yang tinggi per detik. Ini cocok untuk situasi di mana server memiliki kapasitas dan karakteristik kinerja yang serupa, dengan tujuan untuk meningkatkan throughput secara maksimal. Selain itu, Round Robin mencapai tingkat konkurensi puncak dan mampu melakukan skalabilitas yang efektif dalam kondisi tertentu.
+
+## Saran
+- **Analisis Kebutuhan**: Sebelum memilih algoritme penjadwalan, lakukan analisis mendalam terhadap kebutuhan sistem dan karakteristik beban kerja. Kemudian, pilih algoritme yang paling sesuai berdasarkan itu.
+- **Monitoring dan Evaluasi**: Implementasikan sistem monitoring untuk terus mengawasi kinerja server dan melakukan evaluasi berkala. Dengan demikian, Anda dapat mengidentifikasi bottleneck dan melakukan penyesuaian yang diperlukan.
+- **Load Balancer**: Pastikan menggunakan load balancer yang dapat mendistribusikan beban secara efisien. Load balancer yang baik dapat meningkatkan kinerja dan stabilitas sistem secara keseluruhan.
+- **Peningkatan Kapasitas**: Jika tingkat permintaan terus meningkat, pertimbangkan untuk menambah kapasitas server atau menggunakan teknik skalabilitas horizontal dengan menambah lebih banyak server.
+- **Pengujian dan Simulasi**: untuk melakukan pengujian dan simulasi sebanyak mungkin. Hal ini akan membantu menemukan setiap potensi masalah dan memastikan bahwa sistem ini mampu menangani kondisi puncak.
+- **Optimasi Daya**: mengoptimalkan penggunaan sumber daya, seperti CPU dan memori, sehingga setiap server dapat berjalan pada kapasitas maksimum tanpa kelebihan muatan.
+- **Kegagalan atas dan redundansi**: ketenanganingattidaklebih-lebih-dan lebih-berlebihan tapiakumampirkarenaitu tapiriratirawaktu bila katamansalah meramsi server.
+
+Dengan memperhatikan saran-saran di atas, diharapkan proyek di masa mendatang lebih lancar dan berjalan optimal.
